@@ -14,7 +14,7 @@ class CodigoRespuesta(models.TextChoices):
     """Enum para los códigos de respuesta"""
     RESPUESTA_OK = '000', 'Respuesta OK'
     RESPUESTA_ERR = 'ERR', 'Error'
-    # Agrega más opciones aquí si es necesario kasndaksnd
+    # Agrega más opciones aquí si es necesario
 
 
 class Tarjeta(models.Model):
@@ -33,7 +33,7 @@ class Tarjeta(models.Model):
 
 class Pago(models.Model):
     """Definición del modelo para registrar un pago"""
-    # use min_lentgh=1 to avoid empty strings
+    # use min_lentgh=1 to avoid empty strings pruebas
     # since "" is a valid string in Python
     idComercio = models.CharField(max_length=16)
     idTransaccion = models.CharField(max_length=16)
