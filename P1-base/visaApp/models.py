@@ -14,7 +14,7 @@ class CodigoRespuesta(models.TextChoices):
     """Enum para los códigos de respuesta"""
     RESPUESTA_OK = '000', 'Respuesta OK'
     RESPUESTA_ERR = 'ERR', 'Error'
-    # Agrega más opciones aquí si es necesario
+    # Agrega más opciones aquí si es necesario kasndaksnd
 
 
 class Tarjeta(models.Model):
