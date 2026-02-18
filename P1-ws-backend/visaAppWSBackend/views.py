@@ -10,10 +10,9 @@ class TarjetaView(APIView):
 
     def post(self, request):
 
-        datos = request.data
-
-        serializer = TarjetaSerializer(data=datos)
+        serializer = TarjetaSerializer(data=request.data)
         if serializer.is_valid():
+            serializer.save()
             if verificar_tarjeta(serializer.validated_data): 
                 return Response({'message' : 'Datos encontrados en la base de datos'}, status=status.HTTP_200_OK)
         
