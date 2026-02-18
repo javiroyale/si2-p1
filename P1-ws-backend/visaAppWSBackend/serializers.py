@@ -13,6 +13,7 @@ class PagoSerializer(serializers.ModelSerializer):
 
 
 class TarjetaSerializer(serializers.ModelSerializer):
+    numero = serializers.CharField(max_length=19)
     class Meta:
         model = Tarjeta
         fields = [
