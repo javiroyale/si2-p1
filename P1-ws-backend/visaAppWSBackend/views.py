@@ -24,6 +24,9 @@ class PagoView(APIView):
 
         datos = request.data
 
+        if 'tarjeta_id' in datos and 'tarjeta' not in datos:
+            datos['tarjeta'] = datos.pop('tarjeta_id')
+
         serializer = PagoSerializer(data=datos)
         if serializer.is_valid():
             data = serializer.validated_data
