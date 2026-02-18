@@ -12,7 +12,8 @@ class TarjetaView(APIView):
 
         serializer = TarjetaSerializer(data=request.data)
         if serializer.is_valid():
-            if verificar_tarjeta(serializer.data): 
+            print('SOy valido')
+            if verificar_tarjeta(dict(serializer.data)): 
                 return Response({'message' : 'Datos encontrados en la base de datos'}, status=status.HTTP_200_OK)
         
         return Response({'message': 'Datos no encontrados en la base de datos'}, status=status.HTTP_404_NOT_FOUND)
