@@ -1,5 +1,5 @@
 """
-URL configuration for PagoProj project.
+URL configuration for visaSite project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -14,18 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
-from visaApp.views import (aportarinfo_tarjeta, aportarinfo_pago,
-                           testbd, getpagos, delpago)
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    path("", aportarinfo_tarjeta, name="index"),
-    path("tarjeta/", aportarinfo_tarjeta, name="tarjeta"),
-    path("pago/", aportarinfo_pago, name="pago"),
-    path("testbd/", testbd, name="testbd"),
-    path("testbd/getpagos/", getpagos, name="getpagos"),
-    path("testbd/delpago/", delpago, name="delpago"),
+    path('admin/', admin.site.urls),
+    path("visaAppWSBackend/", include("visaAppWSBackend.urls")),
 ]
-
-
-
