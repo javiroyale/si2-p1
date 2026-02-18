@@ -3,7 +3,6 @@ from visaAppWSBackend.models import Pago, Tarjeta
 
 
 class PagoSerializer(serializers.ModelSerializer):
-    tarjeta = serializers.CharField(max_length=19)
     class Meta:
         model = Pago
         fields = [
