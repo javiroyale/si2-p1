@@ -29,7 +29,7 @@ class PagoView(APIView):
         serializer = PagoSerializer(data=datos)
         if serializer.is_valid():
             data = serializer.validated_data
-            if verificar_tarjeta({'numero': data['tarjeta']}):
+            if verificar_tarjeta({'numero': data['tarjeta'].numero}):
                 pago = registrar_pago(data)
             else:
                 return Response({'message': 'Error al registrar pago, tarjeta no existente.'}, status=status.HTTP_404_NOT_FOUND)
@@ -59,5 +59,5 @@ class ComercioView(APIView):
         if not pagos:
             return Response({'message': 'Error al listar los comercios'}, status=status.HTTP_404_NOT_FOUND)
         else:
-            pagos_dict = [model_to_dict(p) for p in pagos]
-            return Response(pagos_dict, status=status.HTTP_200_OK)
+            serializer = PagoSerializer(pagos, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
