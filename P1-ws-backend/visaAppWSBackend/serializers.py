@@ -2,7 +2,7 @@ from rest_framework import serializers
 from visaAppWSBackend.models import Pago, Tarjeta
 
 
-class PagoSerializers(serializers.ModelSerializer):
+class PagoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pago
         fields = [
@@ -12,7 +12,7 @@ class PagoSerializers(serializers.ModelSerializer):
         ]
 
 
-class TarjetaSerializers(serializers.ModelSerializer):
+class TarjetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tarjeta
         fields = [

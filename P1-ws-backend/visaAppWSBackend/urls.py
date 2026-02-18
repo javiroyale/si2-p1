@@ -15,8 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from visaAppWSBackend.views import (aportarinfo_tarjeta, aportarinfo_pago,
-                           testbd, getpagos, delpago)
+from visaAppWSBackend.views import TarjetaView, PagoView, ComercioView
 
 urlpatterns = [
     path("tarjeta/", TarjetaView.as_view(), name = 'tarjeta'), #check si tarjeta esta en "tarjeta"

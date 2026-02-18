@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Pago, Tarjeta
-from .serializers import PagoSerializers, TarjetaSerializers
+from .serializers import PagoSerializer, TarjetaSerializer
 from .pagoDB import verificar_tarjeta, registrar_pago, eliminar_pago, get_pagos_from_db
 
 class TarjetaView(APIView):
@@ -12,7 +12,7 @@ class TarjetaView(APIView):
 
         datos = request.data
 
-        serializer = TarjetaSerializers(data=datos)
+        serializer = TarjetaSerializer(data=datos)
         if serializer.is_valid():
             if verificar_tarjeta(serializer.validated_data): 
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -26,7 +26,7 @@ class PagoView(APIView):
 
         datos = request.data
 
-        serializer = PagoSerializers(data=datos)
+        serializer = PagoSerializer(data=datos)
         if serializer.is_valid():
             data = serializer.validated_data
             if verificar_tarjeta({'numero': data['tarjeta']}):
@@ -42,7 +42,7 @@ class PagoView(APIView):
 
         return Response(pago_dict, status=status.HTTP_200_OK)
     
-    
+
     def delete(self, request, id_pago):
 
         if eliminar_pago(id_pago):
