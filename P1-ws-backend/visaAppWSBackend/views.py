@@ -17,7 +17,7 @@ class TarjetaView(APIView):
             if verificar_tarjeta(serializer.validated_data): 
                 return Response(serializer.data, status=status.HTTP_200_OK)
         
-        return Response({'message': 'Datos de la tarjeta no encontrados.'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'message': 'Datos no encontrados en la base de datos'}, status=status.HTTP_404_NOT_FOUND)
 
 
 class PagoView(APIView):
