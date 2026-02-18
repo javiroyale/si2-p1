@@ -49,6 +49,7 @@ class ApiViewTest(TestCase):
 
     def test_01_tarjeta_check_valid_data(self):
         # Test storing valid data
+        print("data antes de responder", self.tarjeta_data)
         response = self.client.post(
             self.url_tarjeta_check,
             data=self.tarjeta_data,  # tarjeta data
