@@ -54,6 +54,7 @@ class ApiViewTest(TestCase):
             data=self.tarjeta_data,  # tarjeta data
             format='json'
         )
+        print(response.data)
         # Check if the response is 200 OK and the message matches
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(

@@ -12,7 +12,7 @@ class TarjetaView(APIView):
 
         serializer = TarjetaSerializer(data=request.data)
         if serializer.is_valid():
-            print('SOy valido')
+            print('SOy valido', serializer.data)
             if verificar_tarjeta(dict(serializer.data)): 
                 return Response({'message' : 'Datos encontrados en la base de datos'}, status=status.HTTP_200_OK)
         
