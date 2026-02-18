@@ -19,5 +19,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("visaAppWSBackend/", include("visaAppWSBackend.urls")),
+    path("restapiserver/", include("visaAppWSBackend.urls")), #puesto restapiserver y no visaAppWSBackend por el enunciado
 ]
