@@ -55,6 +55,7 @@ class ApiViewTest(TestCase):
             format='json'
         )
         # Check if the response is 200 OK and the message matches
+        print(response.context)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.json(), {'message': 'Datos encontrados en la base de datos'})
