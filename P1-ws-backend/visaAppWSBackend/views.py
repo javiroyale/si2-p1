@@ -24,8 +24,8 @@ class PagoView(APIView):
 
         datos = request.data
 
-        if 'tarjeta_id' in datos and 'tarjeta' not in datos:
-            datos['tarjeta'] = datos.pop('tarjeta_id')
+        if 'tarjeta_id' in datos and 'tarjeta' not in datos: #como en el models es tarjeta y en el serializer tambien, 
+            datos['tarjeta'] = datos.pop('tarjeta_id')       #si nos llega tarjeta_id lo movemos a "tarjeta" para que funcione
 
         serializer = PagoSerializer(data=datos)
         if serializer.is_valid():
