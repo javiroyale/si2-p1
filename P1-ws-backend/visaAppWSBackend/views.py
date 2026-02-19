@@ -10,6 +10,7 @@ class TarjetaView(APIView):
 
     def post(self, request):
 
+        print("DATAAA", request.data)
         serializer = TarjetaSerializer(data=request.data)
         if serializer.is_valid():
             if verificar_tarjeta(serializer.validated_data): 
