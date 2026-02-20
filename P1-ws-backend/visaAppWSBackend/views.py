@@ -10,7 +10,6 @@ class TarjetaView(APIView):
 
     def post(self, request):
 
-        print("DATAAA", request.data)
         serializer = TarjetaSerializer(data=request.data)
         if serializer.is_valid():
             if verificar_tarjeta(serializer.validated_data): 
@@ -18,7 +17,7 @@ class TarjetaView(APIView):
             else:
                 return Response({'message': 'Datos no encontrados en la base de datos'}, status=status.HTTP_404_NOT_FOUND)
         else:
-            return Response({'message': 'Algo ha salido mal'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class PagoView(APIView):
