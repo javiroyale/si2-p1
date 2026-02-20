@@ -142,3 +142,10 @@ CACHES = {
 DATABASE_URL = os.environ.get("DATABASE_SERVER_URL")
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',       # Para el curl que sí te funciona
+        'rest_framework.parsers.FormParser',       # Para formularios simples
+        'rest_framework.parsers.MultiPartParser',  # VITAL: Para lo que envía el navegador
+    ],
+}
