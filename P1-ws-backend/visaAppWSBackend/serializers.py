@@ -11,7 +11,8 @@ class PagoSerializer(serializers.ModelSerializer):
             'codigoRespuesta'  
         ]
         read_only_fields = [
-            'marcaTiempo', 'codigoRespuesta'
+            'marcaTiempo', 'codigoRespuesta',
+            'id'
         ]
 
 
