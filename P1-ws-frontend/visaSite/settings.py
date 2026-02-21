@@ -142,3 +142,5 @@ CACHES = {
 DATABASE_URL = os.environ.get("DATABASE_SERVER_URL")
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+RESTAPIBASEURL = os.environ.get("RESTAPIBASEURL")
+

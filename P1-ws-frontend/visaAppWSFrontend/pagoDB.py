@@ -5,7 +5,10 @@
 #
 # author: rmarabini
 "Interface with the dataabse"
-from visaApp.models import Tarjeta, Pago
+
+
+from django.conf import settings
+import requests
 
 
 def verificar_tarjeta(tarjeta_data):
@@ -14,11 +17,11 @@ def verificar_tarjeta(tarjeta_data):
                        (as provided by TarjetaForm)
     :return True or False if tarjeta_data is not valid
     """
-    if bool(tarjeta_data) is False or not\
-       Tarjeta.objects.filter(**tarjeta_data).exists():
-        return False
-    return True
-
+    api_url = settings.RESTAPIBASEURL + "tarjeta/"
+    response = requests.post(api_url, tarjeta_data)
+    if response.status_code == 200:
+        return True
+    return False
 
 def registrar_pago(pago_dict):
     """ Register a payment in the database
@@ -26,14 +29,13 @@ def registrar_pago(pago_dict):
       plus de tarjeta_id (numero) of the tarjeta
     :return new pago info if succesful, None otherwise
     """
-    try:
-        pago = Pago.objects.create(**pago_dict)
-        # get default values from pago
-        pago = Pago.objects.get(pk=pago.pk)
-    except Exception as e:
-        print("Error: Registrando pago: ", e)
-        return None
-    return pago
+    
+    api_url = settings.RESTAPIBASEURL + "pago/"
+    response = requests.post(api_url, pago_dict)
+    pago = response.json()
+    if response.status_code == 200:
+        return pago
+    raise Exception(response.text)
 
 
 def eliminar_pago(idPago):
@@ -42,12 +44,13 @@ def eliminar_pago(idPago):
     :return True if succesful,
      False otherwise
      """
-    try:
-        pago = Pago.objects.get(id=idPago)
-    except Pago.DoesNotExist:
-        return False
-    pago.delete()
-    return True
+    d={"idPago":idPago}
+    api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago) + "/"
+    response = requests.delete(api_url, d)
+    if response.status_code == 200:
+        return True
+    return False
+
 
 
 def get_pagos_from_db(idComercio):
@@ -55,5 +58,6 @@ def get_pagos_from_db(idComercio):
     :param idComercio: id of the comercio to get pagos from 
     :return list of pagos found
      """
-    pagos = Pago .objects.filter(idComercio=idComercio)
+    api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio) + "/"
+    pagos = requests.get(api_url, idComercio)
     return pagos
