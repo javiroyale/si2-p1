@@ -37,7 +37,7 @@ class PagoView(APIView):
             else:
                 return Response({'message': 'Error al registrar pago, tarjeta no existente.'}, status=status.HTTP_404_NOT_FOUND)
         else:
-            return Response({'message': 'Error al registrar pago.', 'eror':serializer.errors }, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'Error al registrar pago, tarjeta no existente.'}, status=status.HTTP_404_NOT_FOUND)
 
         if pago is None:
             return Response({'message': 'Error al registrar pago.'}, status=status.HTTP_400_BAD_REQUEST)
