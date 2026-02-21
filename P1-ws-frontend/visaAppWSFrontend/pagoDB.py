@@ -47,9 +47,13 @@ def eliminar_pago(idPago):
      False otherwise
      """
     api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago) + "/"
-    response = requests.delete(api_url)
-    if response.status_code == 200 or response.status_code == 204:
-        return True
+    try:
+        response = requests.delete(api_url)
+        if response.status_code == 200:
+            return True
+    except Exception:
+        pass
+
     return False
 
 
@@ -62,6 +66,7 @@ def get_pagos_from_db(idComercio):
     api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio) + "/"
     try:
         response = requests.get(api_url)
+        print("DEBUG GET:", response.status_code, response.text)
         if response.status_code == 200:
             data = response.json()
             return data
