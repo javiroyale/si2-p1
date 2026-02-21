@@ -70,6 +70,7 @@ def get_pagos_from_db(idComercio):
         if response.status_code == 200:
             data = response.json()
             return data
-    except Exception:
-        pass
+    except Exception as e:
+        print("HOLAAA", e.args)
+        #pass
     return []
