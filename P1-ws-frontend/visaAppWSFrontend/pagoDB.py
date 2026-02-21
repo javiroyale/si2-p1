@@ -32,8 +32,8 @@ def registrar_pago(pago_dict):
     
     api_url = settings.RESTAPIBASEURL + "pago/"
     response = requests.post(api_url, pago_dict)
-    pago = response.json()
     if response.status_code == 200:
+        pago = response.json()
         return pago
     raise Exception(response.text)
 
@@ -46,7 +46,7 @@ def eliminar_pago(idPago):
      """
     d={"idPago":idPago}
     api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago) + "/"
-    response = requests.delete(api_url, d)
+    response = requests.delete(api_url)
     if response.status_code == 200:
         return True
     return False
