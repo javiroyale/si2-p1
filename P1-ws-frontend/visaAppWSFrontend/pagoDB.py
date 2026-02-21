@@ -46,7 +46,7 @@ def eliminar_pago(idPago):
      """
     api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago) + "/"
     response = requests.delete(api_url)
-    if response.status_code == 200:
+    if response.status_code == 200 or response.status_code == 204:
         return True
     return False
 
