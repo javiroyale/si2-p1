@@ -38,18 +38,17 @@ def registrar_pago(pago_dict):
     raise Exception(response.text)
 
 
-def eliminar_pago(idPago):
+def eliminar_pago(pago_id):
     """ Delete a pago in the database
     :param idPago: id of the pago to be deleted
     :return True if succesful,
      False otherwise
      """
-    d={"idPago":idPago}
-    api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago) + "/"
+    api_url = settings.RESTAPIBASEURL + "pago/" + str(pago_id) + "/"
     response = requests.delete(api_url)
     if response.status_code == 200:
-        return True, "Pago eliminado correctamente"
-    return False
+        return (True, "Pago eliminado correctamente")
+    return (False, "Pago no eliminado")
 
 
 
@@ -58,10 +57,12 @@ def get_pagos_from_db(idComercio):
     :param idComercio: id of the comercio to get pagos from 
     :return list of pagos found
      """
-    api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio) + "/"
-    response = requests.get(api_url)
-
-    if response.status_code == 200:
-        return response.json()
-
+    api_url = f"{settings.RESTAPIBASEURL}comercio/{idComercio}/"
+    try:
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            data = response.json()
+            return data
+    except Exception:
+        pass
     return []
