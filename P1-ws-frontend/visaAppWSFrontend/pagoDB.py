@@ -59,5 +59,9 @@ def get_pagos_from_db(idComercio):
     :return list of pagos found
      """
     api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio) + "/"
-    pagos = requests.get(api_url, idComercio)
-    return pagos
+    response = requests.get(api_url, params={"idComercio": idComercio})
+
+    if response.status_code == 200:
+        return response.json()
+
+    return []
