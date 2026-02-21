@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-from visaApp.forms import PagoForm, TarjetaForm, DelPagoForm, GetPagosForm
-from visaApp.pagoDB import (verificar_tarjeta, registrar_pago,
+from visaAppWSFrontend.forms import PagoForm, TarjetaForm, DelPagoForm, GetPagosForm
+from visaAppWSFrontend.pagoDB import (verificar_tarjeta, registrar_pago,
                             eliminar_pago, get_pagos_from_db)
 
 

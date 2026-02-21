@@ -10,7 +10,7 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "visaSite.settings")
 django.setup()
 
-from visaApp.models import Tarjeta
+from visaAppWSFrontend.models import Tarjeta
 
 db_config = {
 'dbname': 'si2db', # Nombre de la base de datos
