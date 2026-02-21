@@ -35,6 +35,8 @@ def registrar_pago(pago_dict):
     if response.status_code == 200:
         pago = response.json()
         return pago
+
+    print(f"DEBUG API ERROR: {response.status_code} - {response.text[:200]}")
     raise Exception(response.text)
 
 
