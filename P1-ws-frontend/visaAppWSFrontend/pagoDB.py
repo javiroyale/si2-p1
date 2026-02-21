@@ -71,6 +71,5 @@ def get_pagos_from_db(idComercio):
             data = response.json()
             return data
     except Exception as e:
-        print("HOLAAA", e.args)
-        #pass
+        pass
     return []
