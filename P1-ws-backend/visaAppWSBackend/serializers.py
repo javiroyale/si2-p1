@@ -10,6 +10,9 @@ class PagoSerializer(serializers.ModelSerializer):
             'importe', 'tarjeta', 'marcaTiempo', 
             'codigoRespuesta'  
         ]
+        read_only_fields = [
+            'marcaTiempo', 'codigoRespuesta'
+        ]
 
 
 class TarjetaSerializer(serializers.ModelSerializer):
