@@ -221,6 +221,7 @@ class PagoViewsTest(TestCase):
         response = self.client.post(reverse('getpagos'), {'idComercio': 'c0'})
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        print("DEBUG JSON:", response.json())
         self.assertContains(response, "aaaaa1")
         self.assertContains(response, "aaaaa2")
         self.assertNotContains(response, "aaaaa0")
