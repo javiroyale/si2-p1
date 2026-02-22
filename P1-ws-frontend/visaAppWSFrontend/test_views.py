@@ -220,7 +220,6 @@ class PagoViewsTest(TestCase):
 
         response = self.client.post(reverse('getpagos'), {'idComercio': 'c0'})
 
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertContains(response, "aaaaa1")
         self.assertContains(response, "aaaaa2")

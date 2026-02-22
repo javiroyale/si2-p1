@@ -46,7 +46,7 @@ def eliminar_pago(idPago):
     :return True if succesful,
      False otherwise
      """
-    api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago) + "/"
+    api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago)
     try:
         response = requests.delete(api_url)
         if response.status_code == 200:
@@ -63,13 +63,13 @@ def get_pagos_from_db(idComercio):
     :param idComercio: id of the comercio to get pagos from 
     :return list of pagos found
      """
-    api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio) + "/"
+    api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio)
     try:
         response = requests.get(api_url)
         print("DEBUG GET:", response.status_code, response.text)
         if response.status_code == 200:
             data = response.json()
-            return data
+            return data['pagos']
     except Exception as e:
         pass
     return []
