@@ -18,7 +18,7 @@ def verificar_tarjeta(tarjeta_data):
     :return True or False if tarjeta_data is not valid
     """
     api_url = settings.RESTAPIBASEURL + "tarjeta/"
-    response = requests.post(api_url, tarjeta_data)
+    response = requests.post(api_url, json=tarjeta_data)
     if response.status_code == 200:
         return True
     return False
@@ -31,7 +31,7 @@ def registrar_pago(pago_dict):
     """
     
     api_url = settings.RESTAPIBASEURL + "pago/"
-    response = requests.post(api_url, pago_dict)
+    response = requests.post(api_url, json=pago_dict)
     if response.status_code == 200:
         pago = response.json()
         return pago
@@ -66,7 +66,6 @@ def get_pagos_from_db(idComercio):
     api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio)
     try:
         response = requests.get(api_url)
-        print("DEBUG GET:", response.status_code, response.text)
         if response.status_code == 200:
             data = response.json()
             return data
