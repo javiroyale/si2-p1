@@ -3,7 +3,7 @@ presentation1.pdf
 /si2vm1
 env
 /venv
-
+*.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -5,69 +5,71 @@
 #
 # author: rmarabini
 "Interface with the dataabse"
+from visaAppRPCBackend.models import Tarjeta, Pago
+from modernrpc.core import rpc_method
+from django.forms.models import model_to_dict
 
 
-from django.conf import settings
-import requests
-
-
+@rpc_method
 def verificar_tarjeta(tarjeta_data):
     """ Check if the tarjeta is registered 
     :param tarjeta_dict: dictionary with the tarjeta data
                        (as provided by TarjetaForm)
     :return True or False if tarjeta_data is not valid
     """
-    api_url = settings.RESTAPIBASEURL + "tarjeta/"
-    response = requests.post(api_url, json=tarjeta_data)
-    if response.status_code == 200:
-        return True
-    return False
+    if bool(tarjeta_data) is False or not\
+       Tarjeta.objects.filter(**tarjeta_data).exists():
+        return False
+    return True
 
+
+@rpc_method
 def registrar_pago(pago_dict):
     """ Register a payment in the database
     :param pago_dict: dictionary with the pago data (as provided by PagoForm)
       plus de tarjeta_id (numero) of the tarjeta
     :return new pago info if succesful, None otherwise
     """
-    
-    api_url = settings.RESTAPIBASEURL + "pago/"
-    response = requests.post(api_url, json=pago_dict)
-    if response.status_code == 200:
-        pago = response.json()
-        return pago
+    try:
+        pago = Pago.objects.create(**pago_dict)
+        # get default values from pago
+        pago = Pago.objects.get(pk=pago.pk)
+        pago_a_devolver = model_to_dict(pago)
+        pago_a_devolver[ 'marcaTiempo' ] = str(pago.marcaTiempo)
+        return pago_a_devolver
 
-    raise Exception(response.text)
+    except Exception as e:
+        print("Error: Registrando pago: ", e)
+        return None
 
 
+
+@rpc_method
 def eliminar_pago(idPago):
     """ Delete a pago in the database
     :param idPago: id of the pago to be deleted
     :return True if succesful,
      False otherwise
      """
-    api_url = settings.RESTAPIBASEURL + "pago/" + str(idPago)
     try:
-        response = requests.delete(api_url)
-        if response.status_code == 200:
-            return True
-    except Exception:
-        pass
-
-    return False
+        pago = Pago.objects.get(id=idPago)
+    except Pago.DoesNotExist:
+        return False
+    pago.delete()
+    return True
 
 
-
+@rpc_method
 def get_pagos_from_db(idComercio):
     """ Gets pagos in the database correspondint to some idComercio
     :param idComercio: id of the comercio to get pagos from 
     :return list of pagos found
      """
-    api_url = settings.RESTAPIBASEURL + "comercio/" + str(idComercio)
-    try:
-        response = requests.get(api_url)
-        if response.status_code == 200:
-            data = response.json()
-            return data
-    except Exception as e:
-        pass
-    return []
+    pagos = Pago .objects.filter(idComercio=idComercio)
+    
+    l=[]
+    for p in pagos:
+        d=model_to_dict(p)
+        d[ 'marcaTiempo' ] = str(p.marcaTiempo)
+        l.append(d)
+    return l

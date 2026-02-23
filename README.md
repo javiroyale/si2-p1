@@ -1,2 +1,2 @@
 # si2_alumnos
-codigo necesario en las prácticas de si2
+Sandra Moreno López y Javier Rubio Ruiz
