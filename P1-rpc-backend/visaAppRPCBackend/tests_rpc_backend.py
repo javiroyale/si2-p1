@@ -182,4 +182,4 @@ class RpcEndpointTestCase(TestCase):
 
         # Only pagos with matching idComercio should be returned
         self.assertEqual(len(result), 2)
-
+        #zdsdasd
