@@ -13,7 +13,6 @@ os . environ . setdefault ('DJANGO_SETTINGS_MODULE',
     'visaSite.settings')
 
 django.setup ()
-print("Django ok")
 
 from visaAppRPCBackend . models import Tarjeta , Pago
 
@@ -79,5 +78,5 @@ def procesar_mensajes(ch, method, properties, body):
     return True
 
 
-if __name__ == '__main__ ':
+if __name__ == '__main__':
     main ()
