@@ -12,7 +12,6 @@ sys . path . append ( BASE_DIR )
 os . environ . setdefault ('DJANGO_SETTINGS_MODULE',
     'visaSite.settings')
 
-#pruebeaadasds
 django . setup ()
 
 from visaAppRPCBackend . models import Tarjeta , Pago
@@ -31,6 +30,7 @@ def main () :
     try:
         #conexión síncrona que espera respuesta del server antes de continuar su ejecución, 
         # el hilo del cliente será bloqueado hasta que el server responda
+        print("HOLA DESDE TRY")
         pbc = pika.BlockingConnection(params)  
         canal = pbc.channel()
         #creamos la cola
