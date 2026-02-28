@@ -9,9 +9,10 @@ BASE_DIR = os . path . dirname (
 
 sys . path . append ( BASE_DIR )
 
-os . environ . setdefault (' DJANGO_SETTINGS_MODULE ',
-    'visaSite . settings ')
+os . environ . setdefault ('DJANGO_SETTINGS_MODULE',
+    'visaSite.settings')
 
+#pruebeaadasds
 django . setup ()
 
 from visaAppRPCBackend . models import Tarjeta , Pago
