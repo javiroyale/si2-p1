@@ -27,7 +27,6 @@ def main () :
 
     params = pika.ConnectionParameters(host=hostname, port=port, credentials=credenciales)
 
-    print("conexion ok")
     try:
         #conexión síncrona que espera respuesta del server antes de continuar su ejecución, 
         # el hilo del cliente será bloqueado hasta que el server responda
