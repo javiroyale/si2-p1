@@ -4,6 +4,7 @@ presentation1.pdf
 env
 /venv
 *.pdf
+*.jmx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

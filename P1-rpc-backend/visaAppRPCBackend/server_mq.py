@@ -55,7 +55,7 @@ def main () :
 
 
 def procesar_mensajes(ch, method, properties, body):
-    #los params (body) llega en Bytes ???, pasamos a string y solo me llega el idPago
+    #los params (body) llega en Bytes, pasamos a string y solo me llega el idPago
     idPago = body.decode()
 
     try:
