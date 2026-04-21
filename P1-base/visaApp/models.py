@@ -42,6 +42,8 @@ class Pago(models.Model):
     marcaTiempo = models.DateTimeField(auto_now=True)
     codigoRespuesta = models.CharField(max_length=3,
                                        default=CodigoRespuesta.RESPUESTA_OK)
+    
+    instancia = models.CharField(max_length=24, default=None)
 
     class Meta:
         # Garantiza que cada persona solo pueda emitir un pago con el mismo IdTransacción en el mismo comercio
