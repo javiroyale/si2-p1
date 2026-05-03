@@ -39,6 +39,10 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:18080',
     'http://127.0.0.1:18080',
+    'http://localhost:28080',
+    'http://127.0.0.1:28080',
+    'http://localhost:38080',
+    'http://127.0.0.1:38080',
 ]
 
 USE_X_FORWARDED_HOST = True

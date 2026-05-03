@@ -1,0 +1,32 @@
+2026-04-04 21:32:04,560 INFO o.a.j.u.JMeterUtils: Setting Locale to es_ES
+2026-04-04 21:32:04,585 INFO o.a.j.u.JMeterUtils: Could not find resources for 'es_ES', using 'es'
+2026-04-04 21:32:04,586 INFO o.a.j.JMeter: Loading user properties from: /opt/jmeter/bin/user.properties
+2026-04-04 21:32:04,586 INFO o.a.j.JMeter: Loading system properties from: /opt/jmeter/bin/system.properties
+2026-04-04 21:32:04,586 INFO o.a.j.JMeter: Setting JMeter property: users=1700
+2026-04-04 21:32:04,586 INFO o.a.j.JMeter: Setting JMeter property: summariser.name=summary
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: Version 5.6.3
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: java.version=21.0.10
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: os.name=Linux
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: os.arch=amd64
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: os.version=6.17.0-20-generic
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: java.awt.headless=true
+2026-04-04 21:32:04,593 INFO o.a.j.JMeter: Max memory     =4013948928
+2026-04-04 21:32:04,594 INFO o.a.j.JMeter: Available Processors =8
+2026-04-04 21:32:04,603 INFO o.a.j.JMeter: Default Locale=español (España)
+2026-04-04 21:32:04,604 INFO o.a.j.JMeter: JMeter  Locale=español (España)
+2026-04-04 21:32:04,604 INFO o.a.j.JMeter: JMeterHome=/opt/jmeter
+2026-04-04 21:32:04,604 INFO o.a.j.JMeter: user.dir  =/home/sandorsad/TERCERO/SI 2/si2-p1/P1-base
+2026-04-04 21:32:04,604 INFO o.a.j.JMeter: PWD       =/home/sandorsad/TERCERO/SI 2/si2-p1/P1-base
+2026-04-04 21:32:04,604 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: sandra-ubuntu FullName: sandra-ubuntu
+2026-04-04 21:32:04,621 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'/home/sandorsad/TERCERO/SI 2/si2-p1/P1-base/output_users_1700'
+2026-04-04 21:32:04,622 ERROR o.a.j.JMeter: An error occurred: 
+org.apache.jmeter.report.config.ConfigurationException: The file /home/sandorsad/TERCERO/SI 2/si2-p1/P1-base/P3-projects.jmx doesn't exist or can't be opened
+	at org.apache.jmeter.JMeter.runNonGui(JMeter.java:950) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.startNonGui(JMeter.java:940) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.start(JMeter.java:508) [ApacheJMeter_core.jar:5.6.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.apache.jmeter.NewDriver.main(NewDriver.java:259) [ApacheJMeter.jar:5.6.3]
